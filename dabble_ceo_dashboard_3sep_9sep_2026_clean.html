@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dabble PlayArt — CEO Weekly Dashboard | 3–9 Sep 2026 (Verified Data)</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+:root {
+  --purple:#6B21A8;--purple-lt:#F3E8FF;--purple-md:#A855F7;
+  --teal:#0D9488;--teal-lt:#CCFBF1;
+  --amber:#D97706;--amber-lt:#FEF3C7;
+  --rose:#E11D48;--rose-lt:#FFE4E6;
+  --green:#16A34A;--green-lt:#DCFCE7;
+  --blue:#1D4ED8;--blue-lt:#DBEAFE;
+  --orange:#EA580C;--orange-lt:#FFEDD5;
+  --slate:#0F172A;--slate2:#1E293B;
+  --muted:#64748B;--border:#E2E8F0;--bg:#F8FAFC;--white:#FFFFFF;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--slate2);font-size:14px;line-height:1.6;}
+@media print{body{background:white;font-size:11px;}.no-print{display:none!important;}}
+.wrapper{max-width:1180px;margin:0 auto;padding:32px 24px;}
+
+/* HEADER */
+.dash-header{background:linear-gradient(135deg,#1E1B4B 0%,#312E81 40%,#4C1D95 70%,#6B21A8 100%);color:white;border-radius:20px;padding:36px 44px;margin-bottom:28px;display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:24px;}
+.hdr-left .brand{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:8px;}
+.hdr-left h1{font-size:26px;font-weight:800;line-height:1.2;letter-spacing:-0.5px;}
+.hdr-left .period{font-size:13px;color:rgba(255,255,255,0.7);margin-top:8px;}
+.hdr-right{text-align:right;display:flex;flex-direction:column;align-items:flex-end;gap:10px;}
+.hdr-badge{background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);border-radius:8px;padding:8px 14px;font-size:12px;color:rgba(255,255,255,0.85);font-weight:500;}
+.verified-badge{background:rgba(22,163,74,0.25);border:1px solid rgba(22,163,74,0.5);border-radius:8px;padding:8px 14px;font-size:12px;color:#BBF7D0;font-weight:700;}
+.print-btn{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);color:white;padding:8px 16px;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;text-decoration:none;}
+.print-btn:hover{background:rgba(255,255,255,0.25);}
+
+/* VERIFIED BANNER */
+.verified-banner{background:linear-gradient(135deg,#064E3B,#047857);color:white;border-radius:14px;padding:18px 24px;margin-bottom:24px;display:flex;align-items:flex-start;gap:16px;border:1px solid rgba(16,185,129,0.4);}
+.vb-icon{font-size:24px;flex-shrink:0;}
+.vb-title{font-size:14px;font-weight:800;margin-bottom:4px;}
+.vb-body{font-size:13px;color:rgba(255,255,255,0.88);line-height:1.55;}
+.vb-body strong{color:white;}
+
+/* SECTION LABEL */
+.sec-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.4px;color:var(--muted);margin-bottom:14px;margin-top:36px;display:flex;align-items:center;gap:10px;}
+.sec-label::after{content:'';flex:1;height:1px;background:var(--border);}
+.sec-label span{white-space:nowrap;}
+
+/* KPI GRID */
+.kpi-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-bottom:4px;}
+@media(max-width:1000px){.kpi-grid{grid-template-columns:repeat(3,1fr);}}
+@media(max-width:600px){.kpi-grid{grid-template-columns:repeat(2,1fr);}}
+.kpi{background:white;border-radius:14px;padding:18px 16px;border:1px solid var(--border);box-shadow:0 1px 3px rgba(0,0,0,0.05);position:relative;overflow:hidden;transition:box-shadow .15s;}
+.kpi:hover{box-shadow:0 4px 14px rgba(0,0,0,0.08);}
+.kpi::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
+.kpi.c-green::before{background:var(--green);}
+.kpi.c-purple::before{background:var(--purple);}
+.kpi.c-teal::before{background:var(--teal);}
+.kpi.c-amber::before{background:var(--amber);}
+.kpi.c-rose::before{background:var(--rose);}
+.kpi.c-blue::before{background:var(--blue);}
+.kpi.c-orange::before{background:var(--orange);}
+.kpi-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.6px;color:var(--muted);margin-bottom:8px;}
+.kpi-value{font-size:24px;font-weight:800;color:var(--slate2);line-height:1.1;margin-bottom:6px;}
+.kpi-prev{font-size:11px;color:var(--muted);}
+.kpi-change{display:inline-flex;align-items:center;gap:3px;font-size:11px;font-weight:700;padding:2px 7px;border-radius:20px;margin-top:4px;}
+.kpi-change.up{background:var(--green-lt);color:var(--green);}
+.kpi-change.down{background:var(--rose-lt);color:var(--rose);}
+.kpi-change.flat{background:#F1F5F9;color:var(--muted);}
+
+/* EXEC BANNER */
+.exec-banner{background:linear-gradient(135deg,#0F172A 0%,#1E293B 100%);color:white;border-radius:16px;padding:28px 32px;margin-bottom:8px;border:1px solid #334155;}
+.exec-banner .eb-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:#94A3B8;margin-bottom:4px;}
+.exec-banner .eb-headline{font-size:20px;font-weight:800;color:white;margin-bottom:16px;line-height:1.3;}
+.exec-points{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;}
+.exec-point{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:14px 16px;}
+.exec-point .ep-icon{font-size:16px;margin-bottom:6px;}
+.exec-point .ep-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;color:#94A3B8;margin-bottom:4px;}
+.exec-point .ep-body{font-size:13px;color:#CBD5E1;line-height:1.5;}
+.exec-point .ep-body strong{color:white;}
+.exec-point.good{border-color:rgba(22,163,74,0.3);background:rgba(22,163,74,0.06);}
+.exec-point.warn{border-color:rgba(217,119,6,0.3);background:rgba(217,119,6,0.06);}
+.exec-point.alert{border-color:rgba(225,29,72,0.3);background:rgba(225,29,72,0.06);}
+.exec-point.info{border-color:rgba(107,33,168,0.4);background:rgba(107,33,168,0.08);}
+
+/* DAILY CHARTS */
+.daily-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+@media(max-width:700px){.daily-grid{grid-template-columns:1fr;}}
+.chart-card{background:white;border-radius:14px;padding:22px 24px;border:1px solid var(--border);box-shadow:0 1px 3px rgba(0,0,0,0.05);}
+.chart-card .cc-title{font-size:13px;font-weight:700;color:var(--slate2);margin-bottom:4px;}
+.chart-card .cc-sub{font-size:11px;color:var(--muted);margin-bottom:18px;}
+.bar-day-chart{display:flex;align-items:flex-end;gap:6px;height:120px;}
+.bdc-col{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;}
+.bdc-bars{display:flex;gap:2px;align-items:flex-end;height:100px;width:100%;}
+.bdc-bar{flex:1;border-radius:3px 3px 0 0;min-height:3px;transition:opacity .2s;cursor:pointer;}
+.bdc-bar.curr{background:var(--purple);}
+.bdc-bar.prev{background:#E2E8F0;}
+.bdc-bar:hover{opacity:0.75;}
+.bdc-label{font-size:9px;color:var(--muted);font-weight:600;text-align:center;}
+.chart-legend{display:flex;gap:16px;margin-top:12px;font-size:11px;flex-wrap:wrap;}
+.cl-dot{width:8px;height:8px;border-radius:2px;flex-shrink:0;}
+.cl-item{display:flex;align-items:center;gap:5px;color:var(--muted);}
+
+/* DRIVER ROW */
+.driver-row{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:8px;}
+@media(max-width:800px){.driver-row{grid-template-columns:repeat(3,1fr);}}
+.driver-cell{background:white;border-radius:12px;padding:16px 14px;border:1px solid var(--border);text-align:center;}
+.driver-cell .dc-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;color:var(--muted);margin-bottom:6px;}
+.driver-cell .dc-val{font-size:20px;font-weight:800;color:var(--slate2);line-height:1.1;}
+.driver-cell .dc-arrow{font-size:11px;font-weight:700;margin-top:4px;}
+.driver-cell .dc-arrow.up{color:var(--green);}
+.driver-cell .dc-arrow.down{color:var(--rose);}
+
+/* META */
+.meta-summary{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px;}
+@media(max-width:800px){.meta-summary{grid-template-columns:repeat(2,1fr);}}
+.ms-card{background:white;border-radius:12px;padding:16px;border:1px solid var(--border);}
+.ms-card.hero{background:linear-gradient(135deg,#4C1D95,#6B21A8);color:white;border-color:transparent;}
+.ms-card .ms-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;color:var(--muted);margin-bottom:5px;}
+.ms-card.hero .ms-label{color:rgba(255,255,255,0.65);}
+.ms-card .ms-val{font-size:22px;font-weight:800;color:var(--slate2);line-height:1.1;}
+.ms-card.hero .ms-val{color:white;}
+.ms-card .ms-sub{font-size:11px;color:var(--muted);margin-top:3px;}
+.ms-card.hero .ms-sub{color:rgba(255,255,255,0.65);}
+.ms-card .ms-wow{font-size:11px;font-weight:700;margin-top:5px;}
+.ms-wow.up{color:var(--green);}
+.ms-wow.down{color:var(--rose);}
+
+/* CAMPAIGN TABLE */
+.camp-table{background:white;border-radius:14px;padding:20px 22px;border:1px solid var(--border);box-shadow:0 1px 3px rgba(0,0,0,0.04);}
+.ct-row{display:grid;grid-template-columns:1fr 2fr 90px 75px;align-items:center;gap:12px;padding:9px 0;border-bottom:1px solid var(--border);}
+.ct-row:last-child{border-bottom:none;}
+.ct-row.ct-head{padding-bottom:8px;}
+.ct-head-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;color:var(--muted);}
+.ct-name{font-size:12px;font-weight:500;color:var(--slate2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.ct-bar-wrap{display:flex;align-items:center;gap:8px;}
+.ct-bar-track{flex:1;background:#F1F5F9;border-radius:3px;height:18px;overflow:hidden;}
+.ct-bar-fill{height:100%;border-radius:3px;display:flex;align-items:center;padding-left:6px;font-size:10px;font-weight:700;color:white;white-space:nowrap;}
+.roas-badge{display:inline-block;padding:2px 8px;border-radius:12px;font-size:11px;font-weight:700;text-align:center;}
+.rb-green{background:var(--green-lt);color:var(--green);}
+.rb-amber{background:var(--amber-lt);color:var(--amber);}
+.rb-rose{background:var(--rose-lt);color:var(--rose);}
+.rb-blue{background:var(--blue-lt);color:var(--blue);}
+.rb-orange{background:var(--orange-lt);color:var(--orange);}
+
+/* DATA TABLE */
+.dtable{width:100%;border-collapse:collapse;background:white;border-radius:14px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.05);border:1px solid var(--border);}
+.dtable thead tr{background:var(--slate2);color:white;}
+.dtable thead th{padding:10px 14px;text-align:right;font-size:10px;font-weight:700;letter-spacing:0.4px;text-transform:uppercase;white-space:nowrap;}
+.dtable thead th:first-child{text-align:left;}
+.dtable tbody td{padding:9px 14px;text-align:right;border-bottom:1px solid var(--border);font-size:13px;white-space:nowrap;}
+.dtable tbody td:first-child{text-align:left;font-weight:500;max-width:280px;white-space:normal;}
+.dtable tbody tr:hover td{background:#F8FAFC;}
+.dtable tbody tr:last-child td{border-bottom:none;}
+.dtable tfoot td{background:#F8FAFC;font-weight:700;font-size:12px;padding:9px 14px;text-align:right;border-top:2px solid var(--border);}
+.dtable tfoot td:first-child{text-align:left;}
+.new-tag{display:inline-block;background:var(--orange-lt);color:var(--orange);font-size:9px;font-weight:800;padding:1px 6px;border-radius:10px;margin-left:6px;vertical-align:middle;}
+
+/* CUSTOMER */
+.cust-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+@media(max-width:600px){.cust-grid{grid-template-columns:1fr;}}
+.cust-card{background:white;border-radius:14px;padding:22px;border:1px solid var(--border);}
+.cust-card .cc-t{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.6px;color:var(--muted);margin-bottom:16px;}
+.prog-row{margin-bottom:12px;}
+.prog-labels{display:flex;justify-content:space-between;font-size:13px;margin-bottom:5px;}
+.prog-labels .pn{font-weight:600;}
+.prog-track{background:#E2E8F0;border-radius:6px;height:12px;overflow:hidden;}
+.prog-fill{height:100%;border-radius:6px;}
+
+/* FUNNEL */
+.fv-wrap{display:flex;align-items:stretch;border-radius:12px;overflow:hidden;border:1px solid var(--border);}
+.fv-step{flex:1;background:white;padding:14px 10px;text-align:center;position:relative;border-right:1px solid var(--border);}
+.fv-step:last-child{border-right:none;}
+.fv-num{font-size:20px;font-weight:800;color:var(--slate2);}
+.fv-name{font-size:9px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:0.4px;margin-top:3px;}
+.fv-rate{font-size:10px;font-weight:700;color:var(--green);margin-top:2px;}
+.fv-rate.warn{color:var(--amber);}
+.fv-step.fv-hl{background:var(--purple-lt);}
+.fv-step.fv-hl .fv-num{color:var(--purple);}
+
+/* GC HERO */
+.gc-banner{background:linear-gradient(135deg,#7C2D12 0%,#9A3412 40%,#C2410C 70%,#EA580C 100%);color:white;border-radius:16px;padding:24px 30px;margin-bottom:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;border:1px solid rgba(251,146,60,0.4);}
+.gc-banner .gb-left .gb-tag{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:rgba(255,255,255,0.65);margin-bottom:4px;}
+.gc-banner .gb-left .gb-title{font-size:20px;font-weight:800;line-height:1.2;}
+.gc-banner .gb-left .gb-sub{font-size:13px;color:rgba(255,255,255,0.75);margin-top:6px;}
+.gc-banner .gb-right{display:flex;gap:16px;flex-wrap:wrap;}
+.gc-stat{background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);border-radius:10px;padding:12px 16px;text-align:center;}
+.gc-stat .gs-val{font-size:22px;font-weight:800;line-height:1;}
+.gc-stat .gs-lbl{font-size:10px;color:rgba(255,255,255,0.65);text-transform:uppercase;letter-spacing:0.4px;margin-top:3px;}
+
+/* NEW CAMPAIGN BADGE */
+.new-camp-banner{background:linear-gradient(135deg,#064E3B,#047857);color:white;border-radius:12px;padding:16px 22px;margin-bottom:16px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;border:1px solid rgba(16,185,129,0.4);}
+.ncb-left .ncb-tag{font-size:10px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:rgba(255,255,255,0.6);}
+.ncb-left .ncb-name{font-size:16px;font-weight:800;margin-top:2px;}
+.ncb-left .ncb-sub{font-size:12px;color:rgba(255,255,255,0.7);margin-top:3px;}
+.ncb-right{display:flex;gap:12px;}
+.ncb-stat{background:rgba(255,255,255,0.12);border-radius:8px;padding:10px 14px;text-align:center;}
+.ncb-stat .ns-val{font-size:18px;font-weight:800;}
+.ncb-stat .ns-lbl{font-size:10px;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.3px;}
+
+/* SCORECARD */
+.scorecard-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+@media(max-width:700px){.scorecard-grid{grid-template-columns:1fr;}}
+.sc-card{background:white;border-radius:14px;padding:18px 20px;border:1px solid var(--border);}
+.sc-cat{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.8px;color:var(--muted);margin-bottom:8px;}
+.sc-status{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;margin-bottom:10px;}
+.sc-status.positive{background:var(--green-lt);color:var(--green);}
+.sc-status.watch{background:var(--amber-lt);color:var(--amber);}
+.sc-status.action{background:var(--rose-lt);color:var(--rose);}
+.sc-body{font-size:13px;color:var(--slate2);line-height:1.55;}
+
+/* INSIGHT CARDS */
+.insight-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:12px;}
+@media(max-width:600px){.insight-row{grid-template-columns:1fr;}}
+.ins-card{background:white;border-radius:12px;padding:16px 18px;border:1px solid var(--border);border-left:4px solid var(--purple);}
+.ins-card.green{border-left-color:var(--green);}
+.ins-card.amber{border-left-color:var(--amber);}
+.ins-card.rose{border-left-color:var(--rose);}
+.ins-card.teal{border-left-color:var(--teal);}
+.ins-card.orange{border-left-color:var(--orange);}
+.ins-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.4px;color:var(--slate2);margin-bottom:6px;}
+.ins-body{font-size:13px;color:var(--slate2);line-height:1.55;}
+
+/* FOOTER */
+.dash-footer{margin-top:56px;padding-top:22px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;font-size:11px;color:var(--muted);}
+.dash-footer strong{color:var(--slate2);}
+[data-tip]{position:relative;cursor:default;}
+[data-tip]:hover::after{content:attr(data-tip);position:absolute;bottom:calc(100% + 6px);left:50%;transform:translateX(-50%);background:var(--slate2);color:white;padding:5px 10px;border-radius:6px;font-size:11px;white-space:nowrap;z-index:10;pointer-events:none;}
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+<!-- HEADER -->
+<header class="dash-header">
+  <div class="hdr-left">
+    <div class="brand">Dabble PlayArt · CEO Weekly Dashboard</div>
+    <h1>Weekly Performance Report — Verified Data</h1>
+    <div class="period">3 Sep 2026 – 9 Sep 2026 &nbsp;·&nbsp; Compared to: 27 Aug – 2 Sep 2026 &nbsp;·&nbsp; Shopify · Meta · Shopflo</div>
+  </div>
+  <div class="hdr-right">
+    <div class="verified-badge">✓ Fraud Order Excluded</div>
+    <div class="hdr-badge">Week 36 · 2026</div>
+    <a class="print-btn no-print" onclick="window.print()">🖨 Print / Save PDF</a>
+  </div>
+</header>
+
+<!-- VERIFIED DATA NOTICE -->
+<div class="verified-banner">
+  <div class="vb-icon">✅</div>
+  <div>
+    <div class="vb-title">Verified Data — Order #DP37640 Excluded</div>
+    <div class="vb-body">Order <strong>#DP37640</strong> (6 Sep) has been identified as a <strong>fraudulent / non-genuine order</strong> and is excluded from all calculations in this report. It contained ₹64,952.82 in total order value (₹59,852 in upsells — 92.15% of its value) and was not a real commercial transaction. All KPIs, revenue figures, product tables, AOV, upsell totals and WoW comparisons in this document reflect the <strong>verified, genuine business only</strong>. A separate version of this report including the order exists for reference as <em>dabble_ceo_dashboard_3sep_9sep_2026.html</em>.</div>
+  </div>
+</div>
+
+<!-- 01 CEO OVERVIEW -->
+<div class="sec-label"><span>01 &nbsp;—&nbsp; CEO Overview</span></div>
+
+<div class="kpi-grid">
+  <div class="kpi c-green">
+    <div class="kpi-label">Total Sales (GMV)</div>
+    <div class="kpi-value">₹3,46,283</div>
+    <div class="kpi-prev">Prev: ₹2,54,309</div>
+    <div class="kpi-change up">▲ 36.2% WoW</div>
+  </div>
+  <div class="kpi c-purple">
+    <div class="kpi-label">Net Revenue</div>
+    <div class="kpi-value">₹2,84,634</div>
+    <div class="kpi-prev">Prev: ₹2,10,727</div>
+    <div class="kpi-change up">▲ 35.1% WoW</div>
+  </div>
+  <div class="kpi c-teal">
+    <div class="kpi-label">Orders</div>
+    <div class="kpi-value">269</div>
+    <div class="kpi-prev">Prev: 214</div>
+    <div class="kpi-change up">▲ 25.7% WoW</div>
+  </div>
+  <div class="kpi c-amber">
+    <div class="kpi-label">AOV (Gross ÷ Orders)</div>
+    <div class="kpi-value">₹1,165</div>
+    <div class="kpi-prev">Prev: ₹1,054</div>
+    <div class="kpi-change up">▲ 10.5% WoW</div>
+  </div>
+  <div class="kpi c-blue">
+    <div class="kpi-label">Sessions</div>
+    <div class="kpi-value">6,483</div>
+    <div class="kpi-prev">Prev: 5,197</div>
+    <div class="kpi-change up">▲ 24.7% WoW</div>
+  </div>
+  <div class="kpi c-rose">
+    <div class="kpi-label">Blended ROAS</div>
+    <div class="kpi-value">1.81x</div>
+    <div class="kpi-prev">Prev: 2.00x</div>
+    <div class="kpi-change down">▼ 0.19x WoW</div>
+  </div>
+</div>
+
+<div class="kpi-grid" style="margin-top:12px;">
+  <div class="kpi c-orange">
+    <div class="kpi-label">Meta Spend</div>
+    <div class="kpi-value">₹1,91,499</div>
+    <div class="kpi-prev">Prev: ₹1,26,921</div>
+    <div class="kpi-change down">▲ 50.9% — rising fast</div>
+  </div>
+  <div class="kpi c-purple">
+    <div class="kpi-label">Meta Purchases</div>
+    <div class="kpi-value">214</div>
+    <div class="kpi-prev">Prev: 177</div>
+    <div class="kpi-change up">▲ 20.9% WoW</div>
+  </div>
+  <div class="kpi c-teal">
+    <div class="kpi-label">Meta Attr. ROAS</div>
+    <div class="kpi-value">1.47x</div>
+    <div class="kpi-prev">Prev: 1.70x</div>
+    <div class="kpi-change down">▼ 0.23x WoW</div>
+  </div>
+  <div class="kpi c-green">
+    <div class="kpi-label">New Customers</div>
+    <div class="kpi-value">188</div>
+    <div class="kpi-prev">Prev: 152</div>
+    <div class="kpi-change up">▲ 23.7% WoW</div>
+  </div>
+  <div class="kpi c-blue">
+    <div class="kpi-label">Returning Customers</div>
+    <div class="kpi-value">80</div>
+    <div class="kpi-prev">Prev: 62</div>
+    <div class="kpi-change up">▲ 29.0% WoW</div>
+  </div>
+  <div class="kpi c-amber">
+    <div class="kpi-label">Returning Share</div>
+    <div class="kpi-value">29.9%</div>
+    <div class="kpi-prev">Prev: 29.0%</div>
+    <div class="kpi-change up">▲ 0.9pp WoW</div>
+  </div>
+</div>
+
+<!-- 02 EXECUTIVE READOUT -->
+<div class="sec-label"><span>02 &nbsp;—&nbsp; Executive Readout</span></div>
+
+<div class="exec-banner">
+  <div class="eb-title">Management Summary · 3–9 Sep 2026 (Verified — Fraud Order Excluded)</div>
+  <div class="eb-headline">Strong genuine week: ▲36% revenue, ▲26% orders — but Meta efficiency is declining and the GC campaign is winding down.</div>
+  <div class="exec-points">
+
+    <div class="exec-point good">
+      <div class="ep-icon">📈</div>
+      <div class="ep-title">Revenue &amp; Volume</div>
+      <div class="ep-body">Verified GMV of <strong>₹3,46,283</strong> is up 36.2% WoW on 269 genuine orders (+25.7%). This is the best organic week in the series. The Ganesh Chaturthi festival peak drove real demand in its final days with the Clay Kit leading at 260 units.</div>
+    </div>
+
+    <div class="exec-point warn">
+      <div class="ep-icon">📉</div>
+      <div class="ep-title">Blended ROAS Declining</div>
+      <div class="ep-body">Blended ROAS fell from <strong>2.00x to 1.81x</strong> WoW. Meta spend increased 50.9% to ₹1.91L while Shopify revenue grew 36.2% — spend is outpacing revenue growth. Meta attributed ROAS also fell from 1.70x to 1.47x. The GC campaign efficiency dropped from 2.14x to 1.37x as festival audience saturated.</div>
+    </div>
+
+    <div class="exec-point good">
+      <div class="ep-icon">🌟</div>
+      <div class="ep-title">New TOI/48Hr Campaign Standout</div>
+      <div class="ep-body">A new time-limited campaign <strong>DP_TOI/48Hr</strong> achieved <strong>2.77x ROAS on ₹8,384 spend</strong> with 23 purchases at a CPP of ₹364 — well below the portfolio average (₹895). This format works. It deserves a Diwali-themed successor immediately.</div>
+    </div>
+
+    <div class="exec-point warn">
+      <div class="ep-icon">⚠️</div>
+      <div class="ep-title">AOV Growth is Real but Modest</div>
+      <div class="ep-body">Verified AOV of <strong>₹1,165</strong> is up 10.5% WoW (vs a misleading ₹1,402 when the bulk order was included). This genuine AOV growth reflects mix-shift toward Clay Kits (₹629 per unit) and combo products — a real and healthy trend, but not as dramatic as the inflated figure suggested.</div>
+    </div>
+
+    <div class="exec-point warn">
+      <div class="ep-icon">🪔</div>
+      <div class="ep-title">Post-GC Normalisation Next Week</div>
+      <div class="ep-body">The GC campaign ends 10 Sep. The Clay Kit accounted for <strong>~43% of verified GMV</strong>. Without this, the baseline portfolio needs to carry ₹2.0L–₹2.5L on its own. A Diwali campaign plan must be ready within 2 weeks.</div>
+    </div>
+
+    <div class="exec-point good">
+      <div class="ep-icon">🔁</div>
+      <div class="ep-title">Customer Quality Improving</div>
+      <div class="ep-body">Returning share at <strong>29.9%</strong> for the second consecutive week above 29% — the highest sustained returning rate in the reporting series. Both new (+23.7%) and returning (+29%) customers grew simultaneously. Loyalty momentum is building.</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- 03 DAILY PERFORMANCE -->
+<div class="sec-label"><span>03 &nbsp;—&nbsp; Daily Performance</span></div>
+
+<div class="daily-grid">
+  <!-- Daily GMV -->
+  <div class="chart-card">
+    <div class="cc-title">Daily Total Sales (Verified GMV)</div>
+    <div class="cc-sub">Current week (purple) vs Previous week (grey) · ₹ · #DP37640 removed from 6 Sep</div>
+    <div class="bar-day-chart">
+      <!-- 6 Sep adjusted: ~₹52,694. Max curr: 57,251 (9 Sep). Scale: 58,000 -->
+      <div class="bdc-col">
+        <div class="bdc-bars">
+          <div class="bdc-bar curr" style="height:88%" data-tip="3 Sep: ₹51,086"></div>
+          <div class="bdc-bar prev" style="height:67%" data-tip="27 Aug: ₹38,654"></div>
+        </div>
+        <div class="bdc-label">Thu</div>
+      </div>
+      <div class="bdc-col">
+        <div class="bdc-bars">
+          <div class="bdc-bar curr" style="height:80%" data-tip="4 Sep: ₹46,478"></div>
+          <div class="bdc-bar prev" style="height:33%" data-tip="28 Aug: ₹19,362"></div>
+        </div>
+        <div class="bdc-label">Fri</div>
+      </div>
+      <div class="bdc-col">
+        <div class="bdc-bars">
+          <div class="bdc-bar curr" style="height:75%" data-tip="5 Sep: ₹43,694"></div>
+          <div class="bdc-bar prev" style="height:41%" data-tip="29 Aug: ₹23,957"></div>
+        </div>
+        <div class="bdc-label">Sat</div>
+      </div>
+      <div class="bdc-col">
+        <div class="bdc-bars">
+          <div class="bdc-bar curr" style="height:91%" data-tip="6 Sep: ~₹52,694 (adjusted — fraud order removed)"></div>
+          <div class="bdc-bar prev" style="height:67%" data-tip="30 Aug: ₹38,698"></div>
+        </div>
+        <div class="bdc-label">Sun</div>
+      </div>
+      <div class="bdc-col">
+        <div class="bdc-bars">
+          <div class="bdc-bar curr" style="height:71%" data-tip="7 Sep: ₹40,912"></div>
+          <div class="bdc-bar prev" style="height:41%" data-tip="31 Aug: ₹23,592"></div>
+        </div>
+        <div class="bdc-label">Mon</div>
+      </div>
+      <div class="bdc-col">
+        <div class="bdc-bars">
+          <div class="bdc-bar curr" style="height:93%" data-tip="8 Sep: ₹54,168"></div>
+          <div class="bdc-bar prev" style="height:96%" data-tip="1 Sep: ₹55,678"></div>
+        </div>
+        <div class="bdc-label">Tue</div>
+      </div>
+      <div class="bdc-col">
+        <div class="bdc-bars">
+          <div class="bdc-bar curr" style="height:99%" data-tip="9 Sep: ₹57,251 — week peak"></div>
+          <div class="bdc-bar prev" style="height:94%" data-tip="2 Sep: ₹54,368"></div>
+        </div>
+        <div class="bdc-label">Wed</div>
+      </div>
+    </div>
+    <div class="chart-legend">
+      <div class="cl-item"><div class="cl-dot" style="background:var(--purple)"></div> 3–9 Sep (verified)</div>
+      <div class="cl-item"><div class="cl-dot" style="background:#E2E8F0"></div> 27 Aug–2 Sep</div>
+    </div>
+  </div>
+
+  <!-- Daily Orders -->
+  <div class="chart-card">
+    <div class="cc-title">Daily Orders (Verified)</div>
+    <div class="cc-sub">Current week (purple) vs Previous week (grey) · #DP37640 removed from 6 Sep</div>
+    <div class="bar-day-chart">
+      <!-- 6 Sep adjusted: 36. Max: 47 (9 Sep). Scale: 50 -->
+      <div class="bdc-col">
+        <div class="bdc-bars">
+          <div class="bdc-bar curr" style="height:78%" data-tip="3 Sep: 39 orders"></div>
+          <div class="bdc-bar prev" style="height:58%" data-tip="27 Aug: 29 orders"></div>
+        </div>
+        <div class="bdc-label">Thu</div>
+      </div>
+      <div class="bdc-col">
+        <div class="bdc-bars">
+          <div class="bdc-bar curr" style="height:70%" data-tip="4 Sep: 35 orders"></div>
+          <div class="bdc-bar prev" style="height:30%" data-tip="28 Aug: 15 orders"></div>
+        </div>
+        <div class="bdc-label">Fri</div>
+      </div>
+      <div class="bdc-col">
+        <div class="bdc-bars">
+          <div class="bdc-bar curr" style="height:68%" data-tip="5 Sep: 34 orders"></div>
+          <div class="bdc-bar prev" style="height:38%" data-tip="29 Aug: 19 orders"></div>
+        </div>
+        <div class="bdc-label">Sat</div>
+      </div>
+      <div class="bdc-col">
+        <div class="bdc-bars">
+          <div class="bdc-bar curr" style="height:72%" data-tip="6 Sep: 36 orders (fraud removed)"></div>
+          <div class="bdc-bar prev" style="height:68%" data-tip="30 Aug: 34 orders"></div>
+        </div>
+        <div class="bdc-label">Sun</div>
+      </div>
+      <div class="bdc-col">
+        <div class="bdc-bars">
+          <div class="bdc-bar curr" style="height:76%" data-tip="7 Sep: 38 orders"></div>
+          <div class="bdc-bar prev" style="height:46%" data-tip="31 Aug: 23 orders"></div>
+        </div>
+        <div class="bdc-label">Mon</div>
+      </div>
+      <div class="bdc-col">
+        <div class="bdc-bars">
+          <div class="bdc-bar curr" style="height:80%" data-tip="8 Sep: 40 orders"></div>
+          <div class="bdc-bar prev" style="height:98%" data-tip="1 Sep: 49 orders"></div>
+        </div>
+        <div class="bdc-label">Tue</div>
+      </div>
+      <div class="bdc-col">
+        <div class="bdc-bars">
+          <div class="bdc-bar curr" style="height:94%" data-tip="9 Sep: 47 orders — week peak"></div>
+          <div class="bdc-bar prev" style="height:90%" data-tip="2 Sep: 45 orders"></div>
+        </div>
+        <div class="bdc-label">Wed</div>
+      </div>
+    </div>
+    <div class="chart-legend">
+      <div class="cl-item"><div class="cl-dot" style="background:var(--purple)"></div> 3–9 Sep (verified)</div>
+      <div class="cl-item"><div class="cl-dot" style="background:#E2E8F0"></div> 27 Aug–2 Sep</div>
+    </div>
+  </div>
+</div>
+
+<!-- Daily AOV Table -->
+<div style="overflow:auto;margin-top:14px;">
+  <table class="dtable" style="min-width:600px;">
+    <thead>
+      <tr>
+        <th style="text-align:left">Day</th>
+        <th>Date</th><th>Gross Sales</th><th>Orders</th><th>Daily AOV</th>
+        <th>Prev Date</th><th>Prev AOV</th><th>Change</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Thu</td><td>3 Sep</td><td>₹44,669</td><td>39</td><td>₹1,145</td><td>27 Aug</td><td>₹1,253</td><td style="color:var(--rose);font-weight:700">▼ ₹108</td></tr>
+      <tr><td>Fri</td><td>4 Sep</td><td>₹41,827</td><td>35</td><td>₹1,195</td><td>28 Aug</td><td>₹1,110</td><td style="color:var(--green);font-weight:700">▲ ₹85</td></tr>
+      <tr><td>Sat</td><td>5 Sep</td><td>₹42,453</td><td>34</td><td>₹1,248</td><td>29 Aug</td><td>₹1,088</td><td style="color:var(--green);font-weight:700">▲ ₹160</td></tr>
+      <tr><td>Sun</td><td>6 Sep (adj.)</td><td>~₹43,547</td><td>36</td><td>~₹1,210</td><td>30 Aug</td><td>₹992</td><td style="color:var(--green);font-weight:700">▲ ₹218</td></tr>
+      <tr><td>Mon</td><td>7 Sep</td><td>₹38,674</td><td>38</td><td>₹1,018</td><td>31 Aug</td><td>₹875</td><td style="color:var(--green);font-weight:700">▲ ₹143</td></tr>
+      <tr><td>Tue</td><td>8 Sep</td><td>₹48,390</td><td>40</td><td>₹1,210</td><td>1 Sep</td><td>₹1,025</td><td style="color:var(--green);font-weight:700">▲ ₹185</td></tr>
+      <tr><td>Wed</td><td>9 Sep</td><td>₹54,041</td><td>47</td><td>₹1,150</td><td>2 Sep</td><td>₹1,062</td><td style="color:var(--green);font-weight:700">▲ ₹88</td></tr>
+    </tbody>
+    <tfoot>
+      <tr><td>Week Total</td><td>–</td><td>~₹3,13,601</td><td>269</td><td><strong>₹1,165 avg</strong></td><td>–</td><td>₹1,054</td><td style="color:var(--green);font-weight:700">▲ ₹111 (+10.5%)</td></tr>
+    </tfoot>
+  </table>
+</div>
+<p style="font-size:11px;color:var(--muted);margin-top:6px;">6 Sep figures are approximate (order #DP37640's exact per-line tax/shipping allocation not available at order level — ₹64,953 total order value removed from gross). All other days are exact. 9 Sep is the genuine week peak at ₹57,251.</p>
+
+<!-- 04 REVENUE & EFFICIENCY -->
+<div class="sec-label"><span>04 &nbsp;—&nbsp; Revenue &amp; Efficiency Drivers</span></div>
+
+<div class="driver-row">
+  <div class="driver-cell">
+    <div class="dc-label">Sessions</div>
+    <div class="dc-val">6,483</div>
+    <div class="dc-arrow up">▲ 24.7% (5,197 prev)</div>
+  </div>
+  <div class="driver-cell">
+    <div class="dc-label">Meta Link Clicks</div>
+    <div class="dc-val">3,693</div>
+    <div class="dc-arrow up">▲ 28.1% vs 2,883 prev</div>
+  </div>
+  <div class="driver-cell">
+    <div class="dc-label">Verified Orders</div>
+    <div class="dc-val">269</div>
+    <div class="dc-arrow up">▲ 25.7% (214 prev)</div>
+  </div>
+  <div class="driver-cell">
+    <div class="dc-label">Verified AOV</div>
+    <div class="dc-val">₹1,165</div>
+    <div class="dc-arrow up">▲ 10.5% (₹1,054 prev)</div>
+  </div>
+  <div class="driver-cell">
+    <div class="dc-label">Verified GMV</div>
+    <div class="dc-val">₹3,46,283</div>
+    <div class="dc-arrow up">▲ 36.2% WoW</div>
+  </div>
+</div>
+
+<div style="background:white;border-radius:14px;padding:20px 22px;border:1px solid var(--border);margin-top:4px;">
+  <div style="font-size:13px;font-weight:700;margin-bottom:8px;">Revenue Driver Narrative (Verified)</div>
+  <p style="font-size:13px;color:var(--slate2);line-height:1.7;">
+    Verified GMV grew <strong>36.2% WoW to ₹3,46,283</strong> — driven by a combination of higher session volume (+24.7%), order growth (+25.7%), and a genuine AOV improvement of 10.5%. The Ganesh Chaturthi festival was the primary demand driver, with the Clay Kit contributing ~₹1,49,000 of verified GMV (~43%). Sessions grew broadly in line with the Meta spend increase (+50.9%), but revenue grew at a slower rate than spend — meaning the extra ₹64.6K of Meta budget generated returns below the breakeven threshold. The blended ROAS of <strong>1.81x</strong> is the lowest since the reporting period began, driven primarily by the GC campaign's efficiency decline (2.14x → 1.37x) as the festival audience saturated in its final days.
+  </p>
+</div>
+
+<!-- P&L Table -->
+<div style="overflow:auto;margin-top:14px;">
+  <table class="dtable" style="min-width:500px;">
+    <thead>
+      <tr>
+        <th style="text-align:left">Shopify P&amp;L Line</th>
+        <th>3–9 Sep (Verified)</th><th>27 Aug–2 Sep</th><th>Change</th><th>Change %</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Gross Sales</td><td>~₹3,13,601</td><td>₹2,25,557</td><td style="color:var(--green)">▲ ₹88,044</td><td style="color:var(--green)">▲ 39.0%</td></tr>
+      <tr><td>Discounts</td><td>~₹25,187</td><td>₹12,698</td><td style="color:var(--rose)">▲ ₹12,489 more discount</td><td style="color:var(--rose)">▲ 98.4%</td></tr>
+      <tr><td>Sales Reversals</td><td>~₹9,326</td><td>₹2,132</td><td style="color:var(--rose)">▲ ₹7,194 more reversals</td><td style="color:var(--rose)">▲ 337%</td></tr>
+      <tr><td>Net Sales</td><td>~₹2,84,634</td><td>₹2,10,727</td><td style="color:var(--green)">▲ ₹73,907</td><td style="color:var(--green)">▲ 35.1%</td></tr>
+      <tr><td><strong>Total Sales (Verified GMV)</strong></td><td><strong>₹3,46,283</strong></td><td><strong>₹2,54,309</strong></td><td style="color:var(--green);font-weight:700">▲ ₹91,974</td><td style="color:var(--green);font-weight:700">▲ 36.2%</td></tr>
+    </tbody>
+  </table>
+</div>
+<p style="font-size:11px;color:var(--muted);margin-top:6px;">⚠ Reversals of ₹9,326 remain elevated (+337% WoW) even after removing the fraud order — some may be genuine returns from Clay Kit or multi-item festival orders. Monitor next week's transactions for clarity.</p>
+
+<!-- 05 META ACQUISITION -->
+<div class="sec-label"><span>05 &nbsp;—&nbsp; Meta Acquisition</span></div>
+
+<div class="new-camp-banner">
+  <div class="ncb-left">
+    <div class="ncb-tag">🌟 New Campaign · Best ROAS this week</div>
+    <div class="ncb-name">DP_TOI / 48Hr Campaign — 3 Sep 2026</div>
+    <div class="ncb-sub">Flash/time-limited format · ends 10 Sep · highest efficiency in the portfolio</div>
+  </div>
+  <div class="ncb-right">
+    <div class="ncb-stat"><div class="ns-val">2.77x</div><div class="ns-lbl">ROAS</div></div>
+    <div class="ncb-stat"><div class="ns-val">23</div><div class="ns-lbl">Purchases</div></div>
+    <div class="ncb-stat"><div class="ns-val">₹8,384</div><div class="ns-lbl">Spend</div></div>
+    <div class="ncb-stat"><div class="ns-val">₹364</div><div class="ns-lbl">CPP</div></div>
+  </div>
+</div>
+
+<div class="meta-summary">
+  <div class="ms-card hero">
+    <div class="ms-label">Total Meta Spend</div>
+    <div class="ms-val">₹1,91,499</div>
+    <div class="ms-sub">3–9 Sep · Active campaigns only</div>
+    <div class="ms-wow down">▲ ₹64,578 vs prev (+50.9%)</div>
+  </div>
+  <div class="ms-card">
+    <div class="ms-label">Meta Attributed Revenue</div>
+    <div class="ms-val">₹2,82,231</div>
+    <div class="ms-sub">7-day click + 1-day view (unchanged)</div>
+    <div class="ms-wow up">▲ vs ₹2,15,761 prev</div>
+  </div>
+  <div class="ms-card">
+    <div class="ms-label">Meta Attributed ROAS</div>
+    <div class="ms-val">1.47x</div>
+    <div class="ms-sub">Meta revenue ÷ Meta spend</div>
+    <div class="ms-wow down">▼ 0.23x vs 1.70x prev</div>
+  </div>
+  <div class="ms-card">
+    <div class="ms-label">Blended ROAS (Verified)</div>
+    <div class="ms-val">1.81x</div>
+    <div class="ms-sub">Verified GMV ÷ Meta Spend</div>
+    <div class="ms-wow down">▼ 0.19x vs 2.00x prev</div>
+  </div>
+</div>
+
+<div class="meta-summary" style="margin-top:12px;">
+  <div class="ms-card">
+    <div class="ms-label">Meta Purchases</div>
+    <div class="ms-val">214</div>
+    <div class="ms-sub">All active campaigns</div>
+    <div class="ms-wow up">▲ 37 vs 177 prev</div>
+  </div>
+  <div class="ms-card">
+    <div class="ms-label">Cost Per Purchase</div>
+    <div class="ms-val">₹895</div>
+    <div class="ms-sub">Meta Spend ÷ Purchases</div>
+    <div class="ms-wow down">▲ vs ₹717 prev (higher CPP)</div>
+  </div>
+  <div class="ms-card">
+    <div class="ms-label">Total Impressions</div>
+    <div class="ms-val">~3,48,000</div>
+    <div class="ms-sub">All active campaigns combined</div>
+    <div class="ms-wow up">▲ ~50% vs prev week</div>
+  </div>
+  <div class="ms-card">
+    <div class="ms-label">Meta Adds to Cart</div>
+    <div class="ms-val">739</div>
+    <div class="ms-sub">All active campaigns</div>
+    <div class="ms-wow up">▲ vs ~600 prev week</div>
+  </div>
+</div>
+
+<!-- Campaign table -->
+<div style="margin-top:16px;">
+  <div style="font-size:13px;font-weight:700;margin-bottom:12px;">Active Campaigns — 3–9 Sep · Ranked by Spend</div>
+  <div class="camp-table">
+    <div class="ct-row ct-head">
+      <div class="ct-head-label">Campaign</div>
+      <div class="ct-head-label">Spend (relative)</div>
+      <div class="ct-head-label" style="text-align:right">Spend</div>
+      <div class="ct-head-label" style="text-align:center">ROAS</div>
+    </div>
+    <div class="ct-row">
+      <div class="ct-name">🪔 GC — Ganesh Chaturthi (ends 10 Sep)</div>
+      <div class="ct-bar-wrap"><div class="ct-bar-track"><div class="ct-bar-fill" style="width:100%;background:var(--orange);">₹66,355 · 81 purchases</div></div></div>
+      <div style="font-size:12px;font-weight:600;text-align:right">₹66,355</div>
+      <div><span class="roas-badge rb-amber">1.37x ▼</span></div>
+    </div>
+    <div class="ct-row">
+      <div class="ct-name">DP ABO Testing Campaign</div>
+      <div class="ct-bar-wrap"><div class="ct-bar-track"><div class="ct-bar-fill" style="width:36%;background:var(--purple);">₹23,844 · 20 purch.</div></div></div>
+      <div style="font-size:12px;font-weight:600;text-align:right">₹23,844</div>
+      <div><span class="roas-badge rb-amber">1.51x</span></div>
+    </div>
+    <div class="ct-row">
+      <div class="ct-name">DP Magic Dust Campaign</div>
+      <div class="ct-bar-wrap"><div class="ct-bar-track"><div class="ct-bar-fill" style="width:29%;background:var(--rose);">₹19,187 · 12 purch.</div></div></div>
+      <div style="font-size:12px;font-weight:600;text-align:right">₹19,187</div>
+      <div><span class="roas-badge rb-rose">0.86x ⚠</span></div>
+    </div>
+    <div class="ct-row">
+      <div class="ct-name">DP FingerPaint Campaign</div>
+      <div class="ct-bar-wrap"><div class="ct-bar-track"><div class="ct-bar-fill" style="width:28%;background:var(--purple);">₹18,403 · 15 purch.</div></div></div>
+      <div style="font-size:12px;font-weight:600;text-align:right">₹18,403</div>
+      <div><span class="roas-badge rb-amber">1.45x</span></div>
+    </div>
+    <div class="ct-row">
+      <div class="ct-name">DP All Products Campaign</div>
+      <div class="ct-bar-wrap"><div class="ct-bar-track"><div class="ct-bar-fill" style="width:22%;background:var(--teal);">₹14,738 · 18 purch.</div></div></div>
+      <div style="font-size:12px;font-weight:600;text-align:right">₹14,738</div>
+      <div><span class="roas-badge rb-amber">1.86x</span></div>
+    </div>
+    <div class="ct-row">
+      <div class="ct-name">Prospecting — FP + Magic Dust</div>
+      <div class="ct-bar-wrap"><div class="ct-bar-track"><div class="ct-bar-fill" style="width:21%;background:var(--purple);">₹14,178 · 17 purch.</div></div></div>
+      <div style="font-size:12px;font-weight:600;text-align:right">₹14,178</div>
+      <div><span class="roas-badge rb-amber">1.76x</span></div>
+    </div>
+    <div class="ct-row">
+      <div class="ct-name">DP Playdough Campaign</div>
+      <div class="ct-bar-wrap"><div class="ct-bar-track"><div class="ct-bar-fill" style="width:21%;background:var(--purple);">₹13,691 · 12 purch.</div></div></div>
+      <div style="font-size:12px;font-weight:600;text-align:right">₹13,691</div>
+      <div><span class="roas-badge rb-amber">1.32x</span></div>
+    </div>
+    <div class="ct-row">
+      <div class="ct-name">Dessert Party Playdough</div>
+      <div class="ct-bar-wrap"><div class="ct-bar-track"><div class="ct-bar-fill" style="width:19%;background:var(--purple);">₹12,718 · 16 purch.</div></div></div>
+      <div style="font-size:12px;font-weight:600;text-align:right">₹12,718</div>
+      <div><span class="roas-badge rb-amber">1.42x</span></div>
+    </div>
+    <div class="ct-row">
+      <div class="ct-name">🌟 DP TOI / 48Hr Campaign <span class="new-tag">NEW</span></div>
+      <div class="ct-bar-wrap"><div class="ct-bar-track"><div class="ct-bar-fill" style="width:13%;background:var(--green);">₹8,384 · 23 purch.</div></div></div>
+      <div style="font-size:12px;font-weight:600;text-align:right">₹8,384</div>
+      <div><span class="roas-badge rb-green">2.77x ★</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="insight-row">
+  <div class="ins-card rose">
+    <div class="ins-title">⚠️ Magic Dust — Pause Required</div>
+    <div class="ins-body">ROAS collapsed from <strong>2.15x → 0.86x</strong> while spend rose from ₹12.1K to ₹19.2K. Sub-breakeven on a growing budget. Pause immediately, refresh creative, and retest. This campaign was the best performer 2 weeks ago — audience fatigue is the likely cause.</div>
+  </div>
+  <div class="ins-card green">
+    <div class="ins-title">🌟 TOI/48Hr — Scale for Diwali</div>
+    <div class="ins-body"><strong>2.77x ROAS, ₹364 CPP, 23 purchases</strong> on just ₹8,384 spend. The time-limited urgency format cuts through. Build a Diwali-themed version of this now — Diwali is 20 Oct, just 6 weeks away. Don't wait.</div>
+  </div>
+</div>
+
+<!-- 06 PRODUCT ENGINE -->
+<div class="sec-label"><span>06 &nbsp;—&nbsp; Product Engine (Verified)</span></div>
+
+<div class="gc-banner">
+  <div class="gb-left">
+    <div class="gb-tag">🪔 Festival Peak · GC Campaign ends 10 Sep</div>
+    <div class="gb-title">Dabble Sensory Modelling Clay Kit | Ganesha Edition</div>
+    <div class="gb-sub">~260 units · ~₹1,48,463 verified sales · ~42.9% of verified GMV · Revenue will normalise sharply next week</div>
+  </div>
+  <div class="gb-right">
+    <div class="gc-stat"><div class="gs-val">~260</div><div class="gs-lbl">Units (adj.)</div></div>
+    <div class="gc-stat"><div class="gs-val">~₹1,48,463</div><div class="gs-lbl">Total Sales</div></div>
+    <div class="gc-stat"><div class="gs-val">1.37x</div><div class="gs-lbl">Meta ROAS ▼</div></div>
+    <div class="gc-stat"><div class="gs-val">~42.9%</div><div class="gs-lbl">Share of GMV</div></div>
+  </div>
+</div>
+
+<div style="overflow:auto;">
+  <table class="dtable" style="min-width:700px;">
+    <thead>
+      <tr>
+        <th style="text-align:left">Product</th>
+        <th>Units</th><th>Net Sales</th><th>Total Sales</th><th>vs Prev Wk</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="background:#FFF7ED;">
+        <td><strong>Dabble Sensory Modelling Clay Kit | Ganesha Edition</strong> <span class="new-tag">GC PEAK</span></td>
+        <td>~260</td><td>~₹1,26,821</td><td>~₹1,48,463</td>
+        <td style="color:var(--orange);font-weight:700">▲ +141% units vs 108 prev</td>
+      </tr>
+      <tr>
+        <td>dabble Sensory Playdough</td>
+        <td>48</td><td>₹34,381</td><td>₹40,275</td>
+        <td style="color:var(--green)">▲ vs 44 units prev</td>
+      </tr>
+      <tr>
+        <td>Dabble Finger Painting Fun Pack</td>
+        <td>21</td><td>₹22,226</td><td>₹25,937</td>
+        <td style="color:var(--green)">▲ vs 13 units prev</td>
+      </tr>
+      <tr>
+        <td>Little Artist Combo Kit</td>
+        <td>~12</td><td>~₹15,674</td><td>~₹18,694</td>
+        <td style="color:var(--green)">▲ vs 5 units prev (adj. −1 fraud unit)</td>
+      </tr>
+      <tr>
+        <td>Baby's Starter Painting + Jumbo Brush Combo Kit</td>
+        <td>17</td><td>₹15,231</td><td>₹17,755</td>
+        <td style="color:var(--green)">▲ vs 12 units prev</td>
+      </tr>
+      <tr>
+        <td>Magic Paint Dust + Jumbo Brush Combo Kit</td>
+        <td>10</td><td>₹11,157</td><td>₹13,159</td>
+        <td style="color:var(--green)">▲ vs 8 units prev</td>
+      </tr>
+      <tr>
+        <td>Magic Paint Dust – Baby's First Painting Kit</td>
+        <td>16</td><td>₹10,930</td><td>₹12,904</td>
+        <td style="color:var(--green)">▲ vs 11 units prev</td>
+      </tr>
+      <tr>
+        <td>Dabble Playart Finger Paints</td>
+        <td>11</td><td>₹7,814</td><td>₹9,196</td>
+        <td style="color:var(--green)">▲ vs 5 units prev</td>
+      </tr>
+      <tr>
+        <td>Dabble Painting Art Apron</td>
+        <td>~12</td><td>~₹6,207</td><td>~₹7,495</td>
+        <td style="color:var(--green)">▲ vs 6 units prev (adj.)</td>
+      </tr>
+      <tr>
+        <td>Dabble DIY Sensory Playdough Kit</td>
+        <td>11</td><td>₹5,077</td><td>₹5,734</td>
+        <td style="color:var(--green)">▲ vs 5 units prev</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<p style="font-size:11px;color:var(--muted);margin-top:6px;">Products marked with adj. have had fraud order DP37640 line items removed. Clay Kit, Little Artist Combo, Painting Art Apron, Reusable Colouring Pages, and Canvas Art Board figures are adjusted accordingly.</p>
+
+<div class="insight-row">
+  <div class="ins-card amber">
+    <div class="ins-title">⚠️ Post-GC Cliff — Plan Required</div>
+    <div class="ins-body">The Clay Kit accounts for <strong>~42.9% of verified GMV</strong>. GC campaign ends 10 Sep. The portfolio without the Clay Kit generates ~₹1,97,000 — which is roughly inline with the 27 Aug–2 Sep baseline. There is no cliff below the previous run rate, but there is also no new driver yet to push beyond it.</div>
+  </div>
+  <div class="ins-card green">
+    <div class="ins-title">✅ Broad Portfolio Growth Confirmed</div>
+    <div class="ins-body">Every product except the Clay Kit (which was already growing) also grew WoW. Finger Painting Fun Pack: 13→21 units (+62%). Little Artist Combo: 5→12 units (+140%). Magic Paint Dust: 11→16 (+45%). The genuine underlying portfolio is performing well independently of the festival.</div>
+  </div>
+</div>
+
+<!-- 07 CUSTOMER MIX -->
+<div class="sec-label"><span>07 &nbsp;—&nbsp; Customer Mix</span></div>
+
+<div class="cust-grid">
+  <div class="cust-card">
+    <div class="cc-t">Customer Split — 3–9 Sep 2026</div>
+    <div class="prog-row">
+      <div class="prog-labels"><span class="pn">New Customers</span><span><strong>188</strong> &nbsp;·&nbsp; 70.1%</span></div>
+      <div class="prog-track"><div class="prog-fill" style="width:70.1%;background:var(--purple);"></div></div>
+    </div>
+    <div class="prog-row">
+      <div class="prog-labels"><span class="pn">Returning Customers</span><span><strong>80</strong> &nbsp;·&nbsp; 29.9%</span></div>
+      <div class="prog-track"><div class="prog-fill" style="width:29.9%;background:var(--teal);"></div></div>
+    </div>
+    <div style="margin-top:16px;font-size:13px;color:var(--muted);">Total: <strong style="color:var(--slate2);">268</strong> &nbsp;·&nbsp; Source: Shopify New vs Returning customers export</div>
+    <p style="font-size:11px;color:var(--muted);margin-top:8px;">Note: Customer counts are from Shopify's customer export which does not include order-level fraud exclusion. The fraud order customer is counted here but represents 1 entry out of 268 — a negligible impact on percentages.</p>
+  </div>
+
+  <div class="cust-card">
+    <div class="cc-t">WoW Customer Mix</div>
+    <table class="dtable" style="font-size:12px;">
+      <thead>
+        <tr><th style="text-align:left">Segment</th><th>3–9 Sep</th><th>27 Aug–2 Sep</th><th>Change</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>New customers</td><td>188</td><td>152</td><td style="color:var(--green);font-weight:700">▲ 36 (+23.7%)</td></tr>
+        <tr><td>Returning customers</td><td>80</td><td>62</td><td style="color:var(--green);font-weight:700">▲ 18 (+29.0%)</td></tr>
+        <tr><td>Total</td><td>268</td><td>214</td><td style="color:var(--green);font-weight:700">▲ 54 (+25.2%)</td></tr>
+        <tr><td>Returning share</td><td>29.9%</td><td>29.0%</td><td style="color:var(--green)">▲ +0.9pp</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:11px;color:var(--muted);margin-top:8px;">Two consecutive weeks above 29% returning share — the highest sustained returning rate in the series. Both new and returning customers are growing together, which is the healthiest customer mix signal in the dataset.</p>
+  </div>
+</div>
+
+<!-- 08 CHECKOUT / SHOPFLO -->
+<div class="sec-label"><span>08 &nbsp;—&nbsp; Checkout &amp; Shopflo</span></div>
+
+<div style="font-size:13px;font-weight:700;margin-bottom:10px;">Shopflo Checkout Funnel — Full 7 days (3 Sep supplied separately)</div>
+<div class="fv-wrap">
+  <div class="fv-step">
+    <div class="fv-num">397</div>
+    <div class="fv-name">Checkout Initiated</div>
+    <div class="fv-rate">entry</div>
+  </div>
+  <div class="fv-step">
+    <div class="fv-num">372</div>
+    <div class="fv-name">Login Completed</div>
+    <div class="fv-rate">93.7%</div>
+  </div>
+  <div class="fv-step">
+    <div class="fv-num">370</div>
+    <div class="fv-name">Address Submitted</div>
+    <div class="fv-rate">99.5%</div>
+  </div>
+  <div class="fv-step">
+    <div class="fv-num">284</div>
+    <div class="fv-name">Payment Selected</div>
+    <div class="fv-rate warn">76.8% ⚠</div>
+  </div>
+  <div class="fv-step fv-hl">
+    <div class="fv-num">263</div>
+    <div class="fv-name">Order Completed</div>
+    <div class="fv-rate">92.6%</div>
+  </div>
+</div>
+<p style="font-size:12px;color:var(--muted);margin-top:8px;"><strong>Overall CVR: 66.2%</strong> (263/397). Primary leak: address-to-payment step loses 86 people (21.7%). The fraud order completed checkout normally and is counted in these funnel figures — its removal from order data does not change funnel counts.</p>
+
+<div style="overflow:auto;margin-top:12px;">
+  <table class="dtable" style="min-width:580px;">
+    <thead>
+      <tr><th style="text-align:left">Date</th><th>Initiated</th><th>Login%</th><th>Payment Sel%</th><th>Completed</th><th>CVR</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>3 Sep</td><td>55</td><td>94.6%</td><td>78.2%</td><td>39</td><td>70.9%</td></tr>
+      <tr><td>4 Sep</td><td>48</td><td>95.8%</td><td>76.1%</td><td>34</td><td>70.8%</td></tr>
+      <tr><td>5 Sep</td><td>47</td><td>95.7%</td><td>75.6%</td><td>33</td><td>70.2%</td></tr>
+      <tr><td>6 Sep</td><td>49</td><td>93.9%</td><td>80.4%</td><td>37</td><td>75.5%</td></tr>
+      <tr><td>7 Sep</td><td>62</td><td>93.5%</td><td>80.7%</td><td>36</td><td style="color:var(--rose)">58.1% ▼</td></tr>
+      <tr><td>8 Sep</td><td>56</td><td>92.9%</td><td>74.5%</td><td>39</td><td>69.6%</td></tr>
+      <tr><td>9 Sep</td><td>80</td><td>91.3%</td><td>69.9%</td><td>45</td><td style="color:var(--amber)">56.3% ▼</td></tr>
+    </tbody>
+    <tfoot>
+      <tr><td>Week Total</td><td>397</td><td>93.7%</td><td>76.8%</td><td>263</td><td><strong>66.2%</strong></td></tr>
+    </tfoot>
+  </table>
+</div>
+
+<!-- 10 PROMOTIONS & UPSELL -->
+<div class="sec-label"><span>10 &nbsp;—&nbsp; Promotions, Discounts &amp; Upsell (Verified)</span></div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+  <div>
+    <div style="font-size:13px;font-weight:700;margin-bottom:10px;">Discount Code Performance — 3–9 Sep</div>
+    <table class="dtable">
+      <thead><tr><th style="text-align:left">Code</th><th>Orders</th><th>Sessions</th><th>CVR</th></tr></thead>
+      <tbody>
+        <tr><td><strong>PREPAID</strong></td><td>159</td><td>318</td><td>50%</td></tr>
+        <tr><td>ORDERABOVE1199</td><td>54</td><td>124</td><td>43%</td></tr>
+        <tr><td>ORDERABOVE2499</td><td>31</td><td>79</td><td>39%</td></tr>
+        <tr><td>ST6</td><td>7</td><td>14</td><td>50%</td></tr>
+        <tr><td>GANESHA</td><td>1</td><td>2</td><td>50%</td></tr>
+        <tr><td>BAPPA</td><td>1</td><td>3</td><td>33%</td></tr>
+        <tr><td>BACK5</td><td>1</td><td>4</td><td>25%</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:11px;color:var(--muted);margin-top:8px;">Discount totals reflect Shopflo data which includes the fraud order session. Actual verified order discount total: ~₹25,187 (₹430 from fraud order removed from ₹25,617 raw total).</p>
+  </div>
+
+  <div>
+    <div style="font-size:13px;font-weight:700;margin-bottom:10px;">Upsell Performance — Verified (excl. #DP37640)</div>
+    <table class="dtable">
+      <thead><tr><th style="text-align:left">Top Orders</th><th>Upsell Items</th><th>Value</th><th>% of Order</th></tr></thead>
+      <tbody>
+        <tr><td>#DP37738</td><td>Reusable Pages + Apron</td><td>₹931</td><td>61.3%</td></tr>
+        <tr><td>#DP37588</td><td>Canvas + Reusable + Art Board</td><td>₹628</td><td>48.6%</td></tr>
+        <tr><td>#DP37555</td><td>Painting Art Apron</td><td>₹603</td><td>32.3%</td></tr>
+        <tr><td>#DP37539</td><td>Clay Kit + Reusable Pages</td><td>₹912</td><td>40.9%</td></tr>
+        <tr><td>#DP37509</td><td>Canvas Art Board + Apron + Reusable</td><td>₹1,126</td><td>35.0%</td></tr>
+        <tr><td>25 other orders</td><td>Various</td><td>~₹7,748</td><td>avg ~21%</td></tr>
+      </tbody>
+    </table>
+    <div style="background:#F0FDF4;border:1px solid #86EFAC;border-left:4px solid var(--green);border-radius:8px;padding:10px 14px;margin-top:10px;font-size:12px;color:#14532D;">
+      <strong>Verified upsell total: ~₹11,948 across 29 orders (avg ₹412/upsell order).</strong> This is the genuine upsell performance — Reusable Colouring Pages Kit and Canvas &amp; Stand continue to be the most common upsell items. The 92%-contribution order was fraudulent and is excluded.
+    </div>
+  </div>
+</div>
+
+<!-- 11 CEO SCORECARD -->
+<div class="sec-label"><span>11 &nbsp;—&nbsp; CEO Scorecard (Verified Figures)</span></div>
+
+<div class="scorecard-grid">
+
+  <div class="sc-card">
+    <div class="sc-cat">Commercial</div>
+    <div class="sc-status positive">✓ Positive</div>
+    <div class="sc-body">Verified GMV ₹3,46,283 (+36.2% WoW) on 269 genuine orders. Net revenue ₹2,84,634. This is the best organic week in the series. Reversals elevated at ₹9,326 — still up significantly even after fraud removal. Monitor for genuine returns.</div>
+  </div>
+
+  <div class="sc-card">
+    <div class="sc-cat">Acquisition Efficiency</div>
+    <div class="sc-status action">⚠ Action Required</div>
+    <div class="sc-body">Blended ROAS fell to 1.81x (from 2.00x prev). Meta spend ▲50.9% while GMV ▲36.2% — spend growing faster than revenue. Meta attributed ROAS at 1.47x (▼0.23x). Magic Dust at 0.86x must be paused now. GC campaign declines expected post-10 Sep.</div>
+  </div>
+
+  <div class="sc-card">
+    <div class="sc-cat">Best Campaign</div>
+    <div class="sc-status positive">✓ TOI/48Hr Standout</div>
+    <div class="sc-body">New TOI/48Hr campaign at 2.77x ROAS, ₹364 CPP, 23 purchases on ₹8,384 spend. The most efficient campaign in the portfolio. This format (time-limited urgency) should be the Diwali campaign template.</div>
+  </div>
+
+  <div class="sc-card">
+    <div class="sc-cat">Demand &amp; Traffic</div>
+    <div class="sc-status positive">✓ Positive</div>
+    <div class="sc-body">Sessions ▲24.7% to 6,483. Revenue grew faster than sessions (+36.2%) — meaning higher revenue per session (₹53.4 vs ₹48.9 prev). This is genuine demand improvement, not just traffic volume.</div>
+  </div>
+
+  <div class="sc-card">
+    <div class="sc-cat">Customer Mix</div>
+    <div class="sc-status positive">✓ Positive</div>
+    <div class="sc-body">Returning share at 29.9% — second consecutive week above 29%. Both new (+23.7%) and returning (+29%) customers growing simultaneously. Best customer quality week in the series.</div>
+  </div>
+
+  <div class="sc-card">
+    <div class="sc-cat">Checkout / Conversion</div>
+    <div class="sc-status watch">— Watch</div>
+    <div class="sc-body">Full 7-day CVR: 66.2% (263/397). Payment selection step loses 21.7%. 7 Sep and 9 Sep saw CVR dip to 58% and 56% — festival tail traffic with lower intent. Checkout friction at payment remains unresolved.</div>
+  </div>
+
+  <div class="sc-card">
+    <div class="sc-cat">Product Health</div>
+    <div class="sc-status positive">✓ Positive (with risk)</div>
+    <div class="sc-body">Clay Kit ~42.9% of GMV — will normalise post-10 Sep. All other top products grew WoW. Without Clay Kit, verified portfolio generates ~₹1,97,000 — in line with the previous week's baseline. No cliff, but no new growth driver yet.</div>
+  </div>
+
+  <div class="sc-card">
+    <div class="sc-cat">Upsell Quality</div>
+    <div class="sc-status positive">✓ Healthy</div>
+    <div class="sc-body">Verified upsell: ₹11,948 across 29 orders (avg ₹412). This is organic and healthy — Reusable Pages and Canvas Stand are proven upsell items. No distortion from fraud order. The upsell attach rate at ~11% of orders is stable.</div>
+  </div>
+
+  <div class="sc-card">
+    <div class="sc-cat">Data Quality</div>
+    <div class="sc-status positive">✓ Fully Resolved</div>
+    <div class="sc-body">Sessions confirmed 6,483. 3 Sep Shopflo funnel supplied and incorporated. Fraud order #DP37640 excluded from all revenue, product, AOV, and upsell calculations in this report. A parallel report with the order included exists for audit reference.</div>
+  </div>
+
+</div>
+
+<!-- WHAT TO WATCH NEXT -->
+<div class="sec-label" style="margin-top:36px;"><span>What Management Should Watch — Week of 10–16 Sep</span></div>
+
+<div class="insight-row">
+  <div class="ins-card rose">
+    <div class="ins-title">🔴 1. Post-GC Revenue Normalisation</div>
+    <div class="ins-body">GC campaign ends 10 Sep. Clay Kit revenue (~₹1,49,000/week) will drop sharply. Verified non-Clay-Kit portfolio = ~₹1,97,000. This is a manageable baseline but requires active campaign management to maintain or grow it. Next week's number is the real test.</div>
+  </div>
+  <div class="ins-card rose">
+    <div class="ins-title">🔴 2. Pause Magic Dust Campaign Now</div>
+    <div class="ins-body">0.86x ROAS on ₹19.2K. Down from 2.15x two weeks ago. Creative fatigue is the most likely cause. Pause this week, pull 2–3 fresh creatives, and retest at ₹5K–₹8K to find a winner before scaling again.</div>
+  </div>
+  <div class="ins-card green">
+    <div class="ins-title">🌟 3. Build Diwali TOI Campaign Now</div>
+    <div class="ins-body">TOI/48Hr format proved itself at 2.77x ROAS. Diwali is 20 Oct — 6 weeks away. Start creative development this week. The playbook: time-limited offer, festival-specific product (new kit or bundle), same urgency mechanic.</div>
+  </div>
+  <div class="ins-card amber">
+    <div class="ins-title">⚠️ 4. Watch Reversals</div>
+    <div class="ins-body">Reversals at ₹9,326 — up 337% WoW even after fraud removal. Some may be genuine returns from Clay Kit festival orders. Check the Shopify transactions export for 10–16 Sep to see if these materialise as refunds.</div>
+  </div>
+  <div class="ins-card teal">
+    <div class="ins-title">🔁 5. Activate GC Buyer Retention Flow</div>
+    <div class="ins-body">~260 new Clay Kit buyers entered the database this week. Activate a BIK post-purchase sequence within 7–10 days: offer a related product (Sensory Playdough, Reusable Pages) with a loyalty code. This is the highest-value retention window of Q3.</div>
+  </div>
+  <div class="ins-card">
+    <div class="ins-title">🔍 6. Investigate Payment Drop</div>
+    <div class="ins-body">21.7% of people who submit an address never select a payment method — 86 people this week. This is a persistent friction point across all weeks in this series. Raise with Shopflo to identify whether this is a UX issue, payment option gap, or price sensitivity.</div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="dash-footer">
+  <div>
+    <strong>Dabble PlayArt</strong> · CEO Weekly Dashboard · 3–9 Sep 2026 · <strong>Verified Data (Fraud Order #DP37640 Excluded)</strong><br>
+    Sources: Shopify (Total Sales, Products, Customers, AOV), Meta Ads Manager (Campaigns, Ads), Shopflo (Funnel, Discounts, Upsells) · Parallel report with unverified data: <em>dabble_ceo_dashboard_3sep_9sep_2026.html</em>
+  </div>
+  <div style="text-align:right;">
+    Made by <strong>Dabble Data Team</strong><br>
+    Generated: Sep 10, 2026
+  </div>
+</div>
+
+</div><!-- /wrapper -->
+</body>
+</html>
